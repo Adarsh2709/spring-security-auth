@@ -8,8 +8,12 @@ public class Validation{
         return email != null && email.matches(regex);
     }
 
+    public static boolean isUsernameValid(String username){
+        return username != null && username.length() >= 3;
+    }
+
     public static boolean isPasswordValid(String password){
-        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        String regex = "^(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$";
         return password != null && password.matches(regex);
     }
 }

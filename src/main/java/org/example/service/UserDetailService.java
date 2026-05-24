@@ -42,7 +42,7 @@ public class UserDetailService  implements UserDetailsService{
     }
 
     public Boolean signupUser(UserInfoDto userInfoDto){
-        if (!Validation.isEmailValid(userInfoDto.getUserName())) {
+        if (!Validation.isUsernameValid(userInfoDto.getUsername())) {
             return false;
         }
 
@@ -54,7 +54,7 @@ public class UserDetailService  implements UserDetailsService{
         }
         userInfoDto.setPassword(passwordEncoder.encode(userInfoDto.getPassword()));
         String userId = UUID.randomUUID().toString();
-        userRepository.save(new UserInfo(userId,userInfoDto.getUserName(),userInfoDto.getPassword(), new HashSet<>()));
+        userRepository.save(new UserInfo(userId,userInfoDto.getUsername(),userInfoDto.getPassword(), new HashSet<>()));
         return true;
     }
 }

@@ -35,10 +35,10 @@ public class AuthController
         try{
             Boolean isSignedUp = userDetailService.signupUser(userInfoDto);
             if(Boolean.FALSE.equals(isSignedUp)){
-                return new ResponseEntity<>("Alredy Exist", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Already Exist or Invalid Data", HttpStatus.BAD_REQUEST);
             }
-            RefreshToken refreshToken = refreshTokenService.createRefreshToken(userInfoDto.getUserName());
-            String jwtToken = jwtService.GenerateToken(userInfoDto.getUserName());
+            RefreshToken refreshToken = refreshTokenService.createRefreshToken(userInfoDto.getUsername());
+            String jwtToken = jwtService.GenerateToken(userInfoDto.getUsername());
             return new ResponseEntity<>(JWTResponseDto.builder().accesstoken(jwtToken).token(refreshToken.getToken()).build(),HttpStatus.OK);
         }
         catch(Exception ex){

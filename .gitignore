@@ -1,7 +1,4 @@
 ### IntelliJ IDEA ###
-.idea/
-*.iml
-*.iws
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
